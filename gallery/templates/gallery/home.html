@@ -1,0 +1,36 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photo Gallery</title>
+    <style>
+        .grid-container {
+          display: grid;
+          grid-template-columns: auto auto auto auto;
+          gap: 10px;
+          background-color: #dadada;
+          padding: 10px;
+        }
+        </style>
+</head>
+<body>
+    <h1 style="text-align:center;">Photo gallery</h1>
+    <div class="grid-container">
+        {% for photo in photos %}
+            <img src={{ photo.image.url }} alt="{{ photo.alt }}" style="width: 100%;">
+        {% endfor %}
+    </div>
+    <br>
+    <center>
+        <h3>Upload your images here.</h3>
+        <form method="POST" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Submit">
+        </form>
+    </center>
+    
+    
+</body>
+</html>
